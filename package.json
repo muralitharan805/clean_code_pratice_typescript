@@ -1,0 +1,27 @@
+{
+  "name": "clean_code_pratice_typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muralitharan805/clean_code_pratice_typescript.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muralitharan805/clean_code_pratice_typescript/issues"
+  },
+  "homepage": "https://github.com/muralitharan805/clean_code_pratice_typescript#readme",
+  "dependencies": {
+    "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "ts-node": "10.9.1"
+  }
+}
