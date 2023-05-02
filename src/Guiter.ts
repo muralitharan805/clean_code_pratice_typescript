@@ -9,18 +9,10 @@ export class Guitar {
   private price: number;
 
   guiterSpec: GuitarSpec;
-  constructor(
-    serialNumber: string,
-    price: number,
-    builder: Builder,
-    model: string,
-    type: Type,
-    backWood: Wood,
-    topWood: Wood
-  ) {
+  constructor(serialNumber: string, price: number, guiterSpec: GuitarSpec) {
     this.serialNumber = serialNumber;
     this.price = price;
-    this.guiterSpec = new GuitarSpec(builder, model, type, backWood, topWood);
+    this.guiterSpec = guiterSpec;
   }
 
   getSerialNumber(): string {
