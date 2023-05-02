@@ -1,5 +1,6 @@
 import { Builder } from "./Builder";
 import { Guitar } from "./Guiter";
+import { GuitarSpec } from "./GuiterSpec";
 import { Type } from "./Type";
 import { Wood } from "./Wood";
 
@@ -40,11 +41,15 @@ export class Inventory {
     return null;
   }
 
-  public search(searchGuitar: Guitar): Guitar[] | null {
+  public search(searchGuitar: GuitarSpec): Guitar[] | null {
     const matchingGuiter: any = [];
-    for (const guitar of this.guitars) {
+    for (const guitarobj of this.guitars) {
+      // console.log(guitarobj);
+      // console.log(guitarobj.getSpec().getBuilder());
+
       // Ignore serial number since that's unique
       // Ignore price since that's unique
+      const guitar = guitarobj.getSpec();
       const builder = searchGuitar.getBuilder();
       if (builder && builder !== "" && builder !== guitar.getBuilder()) {
         continue;
@@ -65,8 +70,8 @@ export class Inventory {
       if (topWood && topWood !== "" && topWood !== guitar.getTopWood()) {
         continue;
       }
-      matchingGuiter.push(guitar);
-      // return matchingGuiter;
+      matchingGuiter.push(guitarobj);
+      return matchingGuiter;
     }
     return matchingGuiter;
   }

@@ -1,16 +1,14 @@
 import { Builder, getBuilderName } from "./Builder";
+import { GuitarSpec } from "./GuiterSpec";
 import { Type, getTypeName } from "./Type";
 import { Wood, getWoodName } from "./Wood";
 
 export class Guitar {
   private serialNumber: string;
-  private builder: Builder;
-  private model: string;
-  private type: Type;
-  private backWood: Wood;
-  private topWood: Wood;
+
   private price: number;
 
+  guiterSpec: GuitarSpec;
   constructor(
     serialNumber: string,
     price: number,
@@ -22,11 +20,7 @@ export class Guitar {
   ) {
     this.serialNumber = serialNumber;
     this.price = price;
-    this.builder = builder;
-    this.model = model;
-    this.type = type;
-    this.backWood = backWood;
-    this.topWood = topWood;
+    this.guiterSpec = new GuitarSpec(builder, model, type, backWood, topWood);
   }
 
   getSerialNumber(): string {
@@ -41,23 +35,7 @@ export class Guitar {
     this.price = newPrice;
   }
 
-  getBuilder(): string {
-    return getBuilderName(this.builder);
-  }
-
-  getModel(): string {
-    return this.model;
-  }
-
-  getType(): string {
-    return getTypeName(this.type);
-  }
-
-  getBackWood(): string {
-    return getWoodName(this.backWood);
-  }
-
-  getTopWood(): string {
-    return getWoodName(this.topWood);
+  getSpec(): GuitarSpec {
+    return this.guiterSpec;
   }
 }

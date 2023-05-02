@@ -1,5 +1,6 @@
 import { Builder } from "./Builder";
 import { Guitar } from "./Guiter";
+import { GuitarSpec } from "./GuiterSpec";
 import { Inventory } from "./Inventory";
 import { Type } from "./Type";
 import { Wood } from "./Wood";
@@ -11,9 +12,7 @@ function test() {
   let inventory = new Inventory();
   initializeInventory(inventory);
 
-  let whatErinLikes = new Guitar(
-    "",
-    0,
+  let whatErinLikes = new GuitarSpec(
     Builder.FENDER,
     "Stratocastor",
     Type.ELECTRIC,
@@ -22,10 +21,14 @@ function test() {
   );
   let guitar = inventory.search(whatErinLikes);
   if (guitar !== null) {
-    guitar.forEach((guitar) => {
+    guitar.forEach((guitar1) => {
+      const guitar = guitar1.getSpec();
+
+      console.log("search methods", guitar);
+
       if (guitar !== null) {
         console.log(
-          `Erin, you might like this ${guitar.getBuilder()} ${guitar.getModel()} ${guitar.getType()} guitar:\n ${guitar.getBackWood()} back and sides,\n ${guitar.getTopWood()} top.\n You can have it for only $${guitar.getPrice()}!`
+          `Erin, you might like this ${guitar.getBuilder()} ${guitar.getModel()} ${guitar.getType()} guitar:\n ${guitar.getBackWood()} back and sides,\n ${guitar.getTopWood()} top.\n You can have it for only $${guitar1.getPrice()}!`
         );
       } else {
         console.log("Sorry, Erin, we have nothing for you.");
